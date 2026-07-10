@@ -1,9 +1,9 @@
 # Poster Review Agent
 ![Google AI](https://img.shields.io/badge/Google_AI-4285F4?style=for-the-badge&logo=google&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
-![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Google Apps Script](https://img.shields.io/badge/Google_Apps_Script-4285F4?style=for-the-badge&logo=google&logoColor=white)
 
-**AI-powered brand compliance checker for marketing posters.** Upload a poster image, and the agent automatically reviews it against brand rules — fonts, colors, logo placement, spacing, and more — using Gemini Vision + Supabase pgvector semantic search.
+**AI-powered brand compliance checker for marketing posters.** Upload a poster image, and the agent automatically reviews it against brand rules — fonts, colors, logo placement, spacing, and more — using Gemini Vision + Supabase + Google Apps Script.
 
 Built during my internship at **Atoms Digital Solutions**.
 
@@ -25,7 +25,7 @@ Manual review is slow and inconsistent. By the time a mistake is caught, the pos
 
 1. **Upload** a poster image (PNG/JPG)
 2. **Agent analyzes** the visual using Gemini Vision
-3. **Vector search** against your stored brand guidelines in Supabase pgvector
+3. **Stores** brand rules and analysis results in Supabase
 4. **Returns** a structured compliance report:
    - Pass / Fail per rule
    - Confidence score
@@ -40,16 +40,16 @@ Manual review is slow and inconsistent. By the time a mistake is caught, the pos
 graph LR
     A[Upload Poster] --> B[Gemini Vision Analysis]
     B --> C[Extract Visual Features]
-    C --> D[Supabase pgvector Search]
-    D --> E[Match Against Brand Rules]
+    C --> D[Fetch Brand Rules from Supabase]
+    D --> E[Evaluate Compliance]
     E --> F[Generate Compliance Report]
     F --> G[Return Fix Suggestions]
 ```
 
-1. User uploads a poster image
-2. Gemini Vision extracts layout, typography, color, and logo data
-3. The extracted features are embedded and searched against brand rule vectors in Supabase
-4. Matched rules are evaluated for compliance
+1. User uploads a poster image via the web app
+2. Gemini Vision analyzes layout, typography, color, and logo data
+3. Brand rules are fetched from Supabase
+4. Each rule is evaluated for compliance
 5. A structured report is returned with pass/fail per rule and actionable fixes
 
 ---
@@ -59,28 +59,28 @@ graph LR
 | Component | Tool |
 |-----------|------|
 | **AI / Vision** | Google Gemini API (Vision) |
-| **Vector Store** | Supabase pgvector |
-| **Backend** | Node.js / Python |
-| **Frontend** | Web app / API |
+| **Backend Logic** | Google Apps Script |
+| **Frontend** | HTML / CSS / JavaScript |
+| **Database** | Supabase |
 | **Storage** | Supabase Storage |
 
 ---
 
 ## Key Features
 
-- **Brand rule ingestion** — upload brand guidelines once, store as vector embeddings
+- **Brand rule management** — store and manage brand guidelines in Supabase
 - **Multi-rule checking** — fonts, colors, logo placement, spacing, taglines
-- **Semantic search** — pgvector finds the closest matching brand rule, even with paraphrased descriptions
-- **Confidence scoring** — know how sure the model is for each violation
+- **Structured reports** — pass/fail per rule with confidence scores
 - **Actionable fixes** — not just "wrong color", but "replace #FF5733 with brand blue #0055FF"
-- **API-first** — easy to integrate into design review pipelines
+- **API-driven** — Gemini API integration via Apps Script
+- **Web app interface** — upload, review, and export flow in the browser
 
 ---
 
 ## Impact
 
 - Reduced manual poster review time from ~20 minutes to under 2 minutes
-- Caught brand violations before print/social distribution
+- Caught brand violations before print/distribution
 - Created a reusable brand-compliance pipeline applicable to any visual asset
 
 ---
@@ -88,17 +88,8 @@ graph LR
 ## Project Structure
 
 ```
-├── src/
-│   ├── agent/
-│   │   ├── vision.js        # Gemini Vision integration
-│   │   ├── embedding.js     # Text/image embedding
-│   │   └── rules.js         # Brand rule processing
-│   ├── routes/
-│   │   └── review.js        # API endpoints
-│   └── index.js             # Server entry
-├── supabase/
-│   └── migrations/
-│       └── create_pgvector.sql
+├── Code.gs           # Google Apps Script — backend logic, Gemini API calls
+├── Index.html        # Frontend web app interface
 └── README.md
 ```
 
@@ -125,4 +116,3 @@ If you're building AI-powered design tools, I'd love to connect.
 ## License
 
 MIT
-****
