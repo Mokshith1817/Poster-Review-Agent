@@ -11,7 +11,7 @@ Built during my internship at **Atoms Digital Solutions**.
 
 ## The Problem
 
-Marketing teams at growing companies send out dozens of poster variations across teams, vendors, and campaigns. Small brand violations slip through:
+Design teams at growing companies send out dozens of poster variations across teams, vendors, and campaigns. Small brand violations slip through:
 - Wrong font or color shade
 - Logo placed too close to the edge
 - Missing tagline or incorrect tagline
@@ -118,10 +118,11 @@ B.Tech Computer Science, 2nd Year (2026 batch)
 
 If you're building AI-powered design tools, I'd love to connect.
 
-[LinkedIn](https://www.linkedin.com/in/mokshith-puvvada/) · [GitHub](https://github.com/Mokshith1817)
+[LinkedIn](https://www.linkedin.com/in/mokshith-puvvada/) · [GitHub](https://github.com/Mokshith1817/Poster-Review-Agent)
 
 ---
 
 ## License
 
 MIT
+****
